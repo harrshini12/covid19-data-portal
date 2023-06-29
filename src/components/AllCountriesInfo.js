@@ -9,7 +9,7 @@ const AllCountriesInfo = () => {
     const fetchCountriesInfo = async () => {
       try {
         const response = await axios.get(
-          'http://localhost:3000/allcountriesinfo',
+          'https://eh3s48gyt3.execute-api.eu-central-1.amazonaws.com/covid19/allcountriesinfo',
         );
         setCountriesInfo(response.data);
         setIsLoading(false); 
