@@ -8,7 +8,7 @@ const CountrySelector = ({ onCountrySelect }) => {
     const fetchCountries = async () => {
       try {
         const response = await axios.get(
-          'https://eh3s48gyt3.execute-api.eu-central-1.amazonaws.com/covid19/allcountriesinfo',
+          'https://xsepkabzfc.execute-api.eu-central-1.amazonaws.com/covid19data/allcountriesinfo',
         );
         setCountries(response.data);
       } catch (error) {

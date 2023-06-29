@@ -9,7 +9,7 @@ const Summary = ({ selectedCountry }) => {
   useEffect(() => {
     const fetchSummary = async () => {
       try {
-        let url = 'https://eh3s48gyt3.execute-api.eu-central-1.amazonaws.com/covid19/';
+        let url = 'https://xsepkabzfc.execute-api.eu-central-1.amazonaws.com/covid19data/';
         if (selectedCountry) {
           url += `specificcountryinfo/${selectedCountry}`;
         } else {
