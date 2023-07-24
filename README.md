@@ -1,5 +1,6 @@
 # COVID-19 Information Frontend
 This is the frontend part of the COVID-19 Information project, which provides a user interface to interact with the COVID-19 API and display information about COVID-19 cases worldwide.
+https://main.d1zni81q03bief.amplifyapp.com/
 
 ## Features
 
