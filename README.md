@@ -1,14 +1,11 @@
 # COVID-19 Information Frontend
-This is the frontend part of the COVID-19 Information project, which provides a user interface to interact with the COVID-19 API and display information about COVID-19 cases worldwide.It utilizes the [disease.sh](https://disease.sh/) public API to fetch the latest Covid-19 case data.
-
-## Deployed in AWS Amplify
-https://main.d1zni81q03bief.amplifyapp.com/
+This is the frontend part of the COVID-19 Information project, which provides a user interface to interact with the COVID-19 API and display information about COVID-19 cases worldwide.It utilizes the [European Centre for Disease Prevention and Control](https://opendata.ecdc.europa.eu/covid19/casedistribution/json/) public API to fetch the latest Covid-19 case data.
 
 ## Features
 
 - View summary information about COVID-19 cases globally
 - Search for and view information about COVID-19 cases in specific countries
-- Display the total cases, today's cases, total deaths, and today's deaths for a selected country
+- Display the total cases, total deaths, and total population for a selected country
 
 ## Technologies Used
 

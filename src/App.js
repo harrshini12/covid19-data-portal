@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
-import Header from './components/Header';
-import AllCountriesInfo from './components/AllCountriesInfo';
-import CountrySelector from './components/CountrySelector';
-import Summary from './components/Summary';
-import Footer from './components/Footer';
+import React, { useState } from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import Header from "./components/Header";
+import AllCountriesInfo from "./components/AllCountriesInfo";
+import CountrySelector from "./components/CountrySelector";
+import Summary from "./components/Summary";
+import Footer from "./components/Footer";
 
 const App = () => {
   const [selectedCountry, setSelectedCountry] = useState(null);
@@ -19,7 +19,7 @@ const App = () => {
       <Header />
       <div
         className="p-4 pt-5 pb-5"
-        style={{ paddingLeft: '100px', paddingRight: '100px' }}
+        style={{ paddingLeft: "100px", paddingRight: "100px" }}
       >
         <Tabs>
           <TabList>

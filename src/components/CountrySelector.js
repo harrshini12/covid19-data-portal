@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const CountrySelector = ({ onCountrySelect }) => {
   const [countries, setCountries] = useState([]);
@@ -8,9 +8,12 @@ const CountrySelector = ({ onCountrySelect }) => {
     const fetchCountries = async () => {
       try {
         const response = await axios.get(
-          'https://xsepkabzfc.execute-api.eu-central-1.amazonaws.com/covid19data/allcountriesinfo',
+          "http://localhost:3000/allcountriesinfo"
         );
-        setCountries(response.data);
+        const countryNames = response.data.map(
+          (country) => country.countryName
+        );
+        setCountries(countryNames);
       } catch (error) {
         console.error(error);
       }
@@ -36,13 +39,13 @@ const CountrySelector = ({ onCountrySelect }) => {
           <select
             id="countrySelect"
             className="form-select"
-            style={{ width: '680px' }}
+            style={{ width: "680px" }}
             onChange={handleCountrySelect}
           >
             <option value="">Select a country</option>
             {countries.map((country) => (
-              <option key={country.country} value={country.country}>
-                {country.country}
+              <option key={country} value={country}>
+                {country}
               </option>
             ))}
           </select>

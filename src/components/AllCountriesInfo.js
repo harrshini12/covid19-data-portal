@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const AllCountriesInfo = () => {
   const [countriesInfo, setCountriesInfo] = useState([]);
@@ -9,13 +9,13 @@ const AllCountriesInfo = () => {
     const fetchCountriesInfo = async () => {
       try {
         const response = await axios.get(
-          'https://xsepkabzfc.execute-api.eu-central-1.amazonaws.com/covid19data/allcountriesinfo',
+          "http://localhost:3000/allcountriesinfo"
         );
         setCountriesInfo(response.data);
-        setIsLoading(false); 
+        setIsLoading(false);
       } catch (error) {
         console.error(error);
-        setIsLoading(false); 
+        setIsLoading(false);
       }
     };
 
@@ -31,21 +31,21 @@ const AllCountriesInfo = () => {
         <table className="table my-4">
           <thead>
             <tr>
+              <th>Continent</th>
               <th>Country</th>
               <th>Cases</th>
               <th>Deaths</th>
-              <th>Today's Cases</th>
-              <th>Today's Deaths</th>
+              <th>Population</th>
             </tr>
           </thead>
           <tbody>
             {countriesInfo.map((country) => (
               <tr key={country.country}>
-                <td>{country.country}</td>
+                <td>{country.continent}</td>
+                <td>{country.countryName}</td>
                 <td>{country.cases}</td>
                 <td>{country.deaths}</td>
-                <td>{country.todayCases}</td>
-                <td>{country.todayDeaths}</td>
+                <td>{country.population}</td>
               </tr>
             ))}
           </tbody>

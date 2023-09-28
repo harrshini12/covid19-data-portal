@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { Chart } from 'react-chartjs-2';
-import 'chart.js/auto';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Chart } from "react-chartjs-2";
+import "chart.js/auto";
 
 const Summary = ({ selectedCountry }) => {
   const [summary, setSummary] = useState(null);
@@ -9,14 +9,15 @@ const Summary = ({ selectedCountry }) => {
   useEffect(() => {
     const fetchSummary = async () => {
       try {
-        let url = 'https://xsepkabzfc.execute-api.eu-central-1.amazonaws.com/covid19data/';
+        let url = "http://localhost:3000/";
         if (selectedCountry) {
           url += `specificcountryinfo/${selectedCountry}`;
         } else {
-          url += 'cases';
+          url += "cases";
         }
 
         const response = await axios.get(url);
+        console.log(response.data);
         setSummary(response.data);
       } catch (error) {
         console.error(error);
@@ -39,23 +40,20 @@ const Summary = ({ selectedCountry }) => {
                     <strong>Country:</strong> {selectedCountry}
                   </li>
                   <li className="list-group-item">
-                    <strong>Total Cases:</strong> {summary.cases}
+                    <strong>Total Cases:</strong> {summary.totalCases}
                   </li>
                   <li className="list-group-item">
-                    <strong>Total Deaths:</strong> {summary.deaths}
+                    <strong>Total Deaths:</strong> {summary.totalDeaths}
                   </li>
                   <li className="list-group-item">
-                    <strong>Today's Cases:</strong> {summary.todayCases}
-                  </li>
-                  <li className="list-group-item">
-                    <strong>Today's Deaths:</strong> {summary.todayDeaths}
+                    <strong>Total Population</strong> {summary.totalPopulation}
                   </li>
                 </ul>
               </div>
               <div className="col-md-6">
                 <div
                   className="chart-container"
-                  style={{ width: '200%', height: '300px', marginLeft: '20px' }}
+                  style={{ width: "200%", height: "300px", marginLeft: "20px" }}
                 >
                   <Chart
                     type="pie"
@@ -66,12 +64,23 @@ const Summary = ({ selectedCountry }) => {
               </div>
             </div>
           ) : (
-            <div className="col-md-6">
-              <ul className="list-group">
-                <li className="list-group-item">
-                  <strong>Total Cases:</strong> {summary.cases}
-                </li>
-              </ul>
+            <div className="col-md-6 mx-auto">
+              <table className="table my-4">
+                <thead>
+                  <tr>
+                    <th>Country</th>
+                    <th>Cases</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {summary.map((country) => (
+                    <tr key={country.country}>
+                      <td>{country.country}</td>
+                      <td>{country.cases}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )}
         </div>
@@ -84,12 +93,12 @@ const Summary = ({ selectedCountry }) => {
 
 const getChartData = (summary) => {
   const chartData = {
-    labels: ['Cases', 'Deaths'],
+    labels: ["Cases", "Deaths"],
     datasets: [
       {
-        data: [summary.cases, summary.deaths],
-        backgroundColor: ['#FF6384', '#36A2EB'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB'],
+        data: [summary.totalCases, summary.totalDeaths],
+        backgroundColor: ["#FF6384", "#36A2EB"],
+        hoverBackgroundColor: ["#FF6384", "#36A2EB"],
       },
     ],
   };
@@ -101,9 +110,9 @@ const getChartOptions = () => {
     plugins: {
       datalabels: {
         display: true,
-        color: '#fff',
+        color: "#fff",
         font: {
-          weight: 'bold',
+          weight: "bold",
         },
         formatter: (value) => value.toLocaleString(),
       },
