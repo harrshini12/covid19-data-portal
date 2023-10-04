@@ -30,4 +30,5 @@ This is the frontend part of the COVID-19 Information project, which provides a 
 
 3. Running the Application
     * npm start
+      
 The server should now be running on http://localhost:3001.
